@@ -43,7 +43,7 @@ export default function Read() {
             <p>*example state</p>
             <GridExample />
             <p className="text-m">Because of that we have 2^4 possible combinations of neighbors (<Link url="https://en.wikipedia.org/wiki/Elementary_cellular_automaton" content="1D example" />)
-            , and then every combination have one of two outcomes, which proceeds in 2^2^4 (2^16) outcomes possible for single rule. </p>
+                , and then every combination have one of two outcomes, which proceeds in 2^2^4 (2^16) outcomes possible for single rule. </p>
 
             <h1 className="text-5xl">What is rule?</h1>
             <p>If we take our 16 combinations and each of them can have only 2 states, we can say that we have 16 bits.</p>
@@ -54,7 +54,10 @@ export default function Read() {
 
             <h1 className="text-5xl">How density works?</h1>
             <p>Chance that cell will be alive at the start of simulation</p>
-            <p>(Math.Rand() -&gt; 1-density) =&gt; true = alive else false = dead</p>
+            <p>(getRand() -&gt; 1-density) =&gt; true = alive else false = dead</p>
+
+            <h1 className="text-5xl">I refresh page and no changes in start position?!</h1>
+            <p>Instead of usual Math.Random this page operates on sfc32 and static seed</p>
 
         </div>
     )
