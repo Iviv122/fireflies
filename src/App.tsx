@@ -3,8 +3,11 @@ import Fireflies from "./components/fireflies"
 import Input from "./components/input";
 import Select, { type Preset } from "./components/select";
 import { interesting_presets } from "./consts/presets";
+import { BiSpreadsheet } from "react-icons/bi";
 
 function App() {
+
+  const [isReading, setIsReading] = useState<boolean>(false);
 
   const [ruleNumber, setRuleNumber] = useState<number>(12634);
   const [pixelSize, setPixelSize] = useState<number>(10);
@@ -21,6 +24,15 @@ function App() {
   function selectPreset(e: Preset) {
     setRuleNumber(e.rule)
     setDensity(e.density)
+  }
+
+  if (isReading) {
+    return (
+      <p>
+        Read here
+      </p>
+    )
+
   }
 
   return (
@@ -64,6 +76,19 @@ function App() {
         </label>
         <Select options={interesting_presets} onSelect={selectPreset} name="Interesting samples" />
       </div>
+
+      <button
+        onClick={() => setIsReading(!isReading)}
+        className="
+      absolute top-0 right-0 z-20 text-gray-50 p-2 text-4xl hover:scale-125
+      hover:text-green-500
+      transition-all
+      duration-100
+      ease-in-out"
+      >
+        <BiSpreadsheet />
+      </button>
+
 
       <Fireflies
         pixel_size={pixelSize}
