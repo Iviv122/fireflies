@@ -28,9 +28,21 @@ function App() {
 
   if (isReading) {
     return (
-      <p>
+      <div>
         Read here
-      </p>
+        <button
+          onClick={() => setIsReading(!isReading)}
+          className="
+      absolute top-0 right-0 z-20 text-gray-50 p-2 text-4xl hover:scale-125
+      hover:text-green-500
+      transition-all
+      duration-100
+      ease-in-out"
+        >
+          <BiSpreadsheet />
+        </button>
+      </div>
+
     )
 
   }
