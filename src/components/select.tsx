@@ -1,3 +1,5 @@
+import { useState } from "react"
+
 export interface Preset {
     rule: number
     density: number
@@ -11,16 +13,26 @@ interface SelectProps {
  *  stylized alternative for select tag
  */
 export default function SelectPreset({ onSelect, options, name }: SelectProps) {
+
+    const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        onSelect?.(options[Number(e.target.value)])
+    }
+
     return (
         <select
-            defaultValue={name || ""}
+            value="Select preset"
+            onChange={handleChange}
         >
-            <option value="" disabled>
-                Choose preset
+            <option value="Select preset" disabled>
+                {name}
             </option>
-            {
-                options.map((e: Preset, i) => <option key={i} onClick={() => onSelect?.(e)}>density: {e.density} rule: {e.rule}</option>)
-            }
+            {options.map((preset, i) => {
+                return (
+                    <option key={i} value={i}>
+                        Density: {preset.density} | Rule: {preset.rule}
+                    </option>
+                )
+            })}
         </select>
 
     )

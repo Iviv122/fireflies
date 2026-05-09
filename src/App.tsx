@@ -62,10 +62,7 @@ function App() {
             step={0.05}
           />
         </label>
-        <label>
-          Try preset:{" "}
-          <Select options={interesting_presets} onSelect={selectPreset} name="presets" />
-        </label>
+        <Select options={interesting_presets} onSelect={selectPreset} name="Interesting samples" />
       </div>
 
       <Fireflies
