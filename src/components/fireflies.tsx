@@ -1,14 +1,3 @@
-/*
-*
-*   This is my own cellular automata,
-*   i have no idea if someone came with this before me but i thought it would be cool
-*   to implement this one
-*   
-*    *
-*   *X* every cell has 4 neighbours, and new state is defined the same way as wolfram 1d automatas
-*    *
-*/
-
 import { useRef, useEffect } from "react";
 
 interface FirefliesProps{
@@ -111,7 +100,7 @@ export default function Fireflies({pixel_size,rule_number,className} : Fireflies
             cancelAnimationFrame(animationId)
             window.removeEventListener("resize", handleResize)
         }
-    }, []);
+    }, [rule_number,pixel_size]);
 
 
     return (
