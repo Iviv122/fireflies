@@ -3,10 +3,11 @@ import { useRef, useEffect } from "react";
 interface FirefliesProps{
     pixel_size: number,
     rule_number: number,
+    density: number,
     className?: string
 };
 
-export default function Fireflies({pixel_size,rule_number,className} : FirefliesProps) {
+export default function Fireflies({pixel_size,rule_number,className,density} : FirefliesProps) {
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
     useEffect(() => {
@@ -54,7 +55,7 @@ export default function Fireflies({pixel_size,rule_number,className} : Fireflies
 
             for (let y = 0; y < rows; y++) {
                 for (let x = 0; x < cols; x++) {
-                    cur[y][x] = Math.round(getRand());
+                    cur[y][x] = (getRand() >= 1-density) ? 1 : 0;
                     drawCell(x, y, cur[y][x]);
                 }
             }
@@ -100,7 +101,7 @@ export default function Fireflies({pixel_size,rule_number,className} : Fireflies
             cancelAnimationFrame(animationId)
             window.removeEventListener("resize", handleResize)
         }
-    }, [rule_number,pixel_size]);
+    }, [rule_number,pixel_size,density]);
 
 
     return (
