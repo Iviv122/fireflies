@@ -29,7 +29,7 @@ function App() {
 
   if (isReading) {
     return (
-      <div className="relative w-dvw h-dvh bg-[#1a1d23] text-[#8e9eb8]">
+      <div className="relative w-vw h-vh bg-[#1a1d23] text-[#8e9eb8]">
         <Read />
         <button
           onClick={() => setIsReading(!isReading)}
