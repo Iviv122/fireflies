@@ -4,6 +4,7 @@ import Input from "./components/input";
 import Select, { type Preset } from "./components/select";
 import { interesting_presets } from "./consts/presets";
 import { BiSpreadsheet } from "react-icons/bi";
+import Read from "./components/read";
 
 function App() {
 
@@ -28,8 +29,8 @@ function App() {
 
   if (isReading) {
     return (
-      <div>
-        Read here
+      <div className="relative w-dvw h-dvh bg-[#1a1d23] text-[#8e9eb8]">
+        <Read />
         <button
           onClick={() => setIsReading(!isReading)}
           className="
@@ -50,13 +51,13 @@ function App() {
   return (
     <div className="relative w-dvw h-dvh">
 
-      <div className="flex gap-5 text-gray-50">
+      <div className="flex gap-5 text-gray-50 items-center justify-center ">
         <label>
           Select rule:{" "}
           <Input placeHolder="Rule number" onChange={setFun(setRuleNumber)} value={ruleNumber.toString()} />
         </label>
 
-        <label className="flex items-center gap-2">
+        <label className="flex items-center gap-2  ">
           <span>Cell size:</span>
           <span className="inline-block w-12 text-right tabular-nums">
             {pixelSize}

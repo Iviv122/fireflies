@@ -22,13 +22,14 @@ export default function SelectPreset({ onSelect, options, name }: SelectProps) {
         <select
             value="Select preset"
             onChange={handleChange}
+            className="cursor-pointer"
         >
             <option value="Select preset" disabled>
                 {name}
             </option>
             {options.map((preset, i) => {
                 return (
-                    <option key={i} value={i}>
+                    <option key={i} value={i} className="cursor-pointer">
                         Density: {preset.density} | Rule: {preset.rule}
                     </option>
                 )

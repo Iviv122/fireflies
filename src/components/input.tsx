@@ -16,7 +16,7 @@ export default function Input({ value,onChange, className, placeHolder, type,min
         <input
             onChange={(e : ChangeEvent<HTMLInputElement>) => onChange?.(e.target.value)}
             className={
-                "bg-amber-50 text-black "
+                "bg-amber-50 text-black cursor-pointer"
                 + (className || "")
             }
             placeholder={placeHolder}
