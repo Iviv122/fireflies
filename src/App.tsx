@@ -26,22 +26,42 @@ function App() {
   return (
     <div className="relative w-dvw h-dvh">
 
-      <div className="text-gray-50">
+      <div className="flex gap-5 text-gray-50">
         <label>
           Select rule:{" "}
           <Input placeHolder="Rule number" onChange={setFun(setRuleNumber)} value={ruleNumber.toString()} />
         </label>
 
-        <label>
-          Cell size: {pixelSize}{" "}
-          <Input placeHolder="Pixel size" onChange={setFun(setPixelSize)} value={pixelSize.toString()} type='range' min={4} max={100} step={1} />
+        <label className="flex items-center gap-2">
+          <span>Cell size:</span>
+          <span className="inline-block w-12 text-right tabular-nums">
+            {pixelSize}
+          </span>
+          <Input
+            placeHolder="Pixel size"
+            onChange={setFun(setPixelSize)}
+            value={pixelSize.toString()}
+            type='range'
+            min={4}
+            max={100}
+            step={1}
+          />
         </label>
-
-        <label>
-          Density:{density}{" "}
-          <Input placeHolder="Density" onChange={setFun(setDensity)} value={density.toString()} type='range' min={0} max={1} step={0.05} />
+        <label className="flex items-center gap-2">
+          <span>Density:</span>
+          <span className="inline-block w-16 text-right tabular-nums">
+            {density}
+          </span>
+          <Input
+            placeHolder="Density"
+            onChange={setFun(setDensity)}
+            value={density.toString()}
+            type='range'
+            min={0}
+            max={1}
+            step={0.05}
+          />
         </label>
-
         <label>
           Try preset:{" "}
           <Select options={interesting_presets} onSelect={selectPreset} name="presets" />
