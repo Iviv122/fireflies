@@ -12,13 +12,11 @@
 import { useRef, useEffect } from "react";
 
 interface FirefliesProps{
-    cols : number
-    rows : number,
     pixel_size: number,
     rule_number: number
 };
 
-export default function Fireflies({cols,rows,pixel_size,rule_number} : FirefliesProps) {
+export default function Fireflies({pixel_size,rule_number} : FirefliesProps) {
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
     useEffect(() => {
@@ -45,11 +43,13 @@ export default function Fireflies({cols,rows,pixel_size,rule_number} : Fireflies
         const getRand = sfc32(2177591200, 398881965, 2286335670, 118324663);
 
         function start() {
-            const defog_speed = 4.785;
+            
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+            const cols = Math.floor(width / pixel_size);
+            const rows = Math.floor(height / pixel_size);
 
 
-            const width  = cols*pixel_size;
-            const height  = rows*pixel_size;
             canvas.width = width;
             canvas.height = height;
 
@@ -79,8 +79,6 @@ export default function Fireflies({cols,rows,pixel_size,rule_number} : Fireflies
                 ctx.fillRect(x * pixel_size, y * pixel_size, pixel_size, pixel_size);
             }
             function iterate(row: number) {
-                ctx.fillStyle = `rgba(26, 29, 35, ${defog_speed / cols})`;
-                ctx.fillRect(0, 0, width, height);
 
                 for (let y = 0; y < rows; y++) {
                     for (let x = 0; x < cols; x++) {
@@ -118,6 +116,6 @@ export default function Fireflies({cols,rows,pixel_size,rule_number} : Fireflies
 
 
     return (
-        <canvas ref={canvasRef}  />
+        <canvas ref={canvasRef}/>
     );
 }
