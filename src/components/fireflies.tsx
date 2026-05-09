@@ -13,10 +13,11 @@ import { useRef, useEffect } from "react";
 
 interface FirefliesProps{
     pixel_size: number,
-    rule_number: number
+    rule_number: number,
+    className?: string
 };
 
-export default function Fireflies({pixel_size,rule_number} : FirefliesProps) {
+export default function Fireflies({pixel_size,rule_number,className} : FirefliesProps) {
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
     useEffect(() => {
@@ -93,8 +94,6 @@ export default function Fireflies({pixel_size,rule_number} : FirefliesProps) {
                     }
                 }
 
-
-
                 [cur, neew] = [cur, neew];
                 animationId = requestAnimationFrame(() => iterate(row + 1));
             }
@@ -116,6 +115,6 @@ export default function Fireflies({pixel_size,rule_number} : FirefliesProps) {
 
 
     return (
-        <canvas ref={canvasRef}/>
+        <canvas ref={canvasRef} className={className}/>
     );
 }
