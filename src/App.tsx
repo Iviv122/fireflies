@@ -1,6 +1,8 @@
-import { useState, type SetStateAction } from "react"
+import React, { useState, type SetStateAction } from "react"
 import Fireflies from "./components/fireflies"
 import Input from "./components/input";
+import Select, { type Preset } from "./components/select";
+import { interesting_presets } from "./consts/presets";
 
 function App() {
 
@@ -16,67 +18,34 @@ function App() {
     };
   }
 
-  const interesting_presets = [
-    {
-      rule: 9150,
-      density: 0.5
-    },
-    {
-      rule: 6,
-      density: 0.5
-    },
-    {
-      rule: 12634,
-      density: 1
-    },
-    {
-      rule: 41401,
-      density: 0.5
-    },
-    {
-      rule: 19907,
-      density: 1
-    },
-    {
-      rule: 18523,
-      density: 0.5
-    },
-    {
-      rule: 33112,
-      density: 0.5,
-    },
-    {
-      rule:  63157,
-      density: 0.5
-    },
-    {
-      rule:50587,
-      density: 1,
-    },
-    {
-      rule: 47460,
-      density: 0.5
-    },
-    {
-      rule: 47464,
-      density: 0.5
-    },
-    {
-      rule: 47512,
-      density: 0.9
-    }
-  ]
+  function selectPreset(e: Preset) {
+    setRuleNumber(e.rule)
+    setDensity(e.density)
+  }
 
   return (
     <div className="relative w-dvw h-dvh">
 
       <div className="text-gray-50">
-        <Input placeHolder="Rule number" onChange={setFun(setRuleNumber)} value={ruleNumber.toString()} />
-        <Input placeHolder="Pixel size" onChange={setFun(setPixelSize)} value={pixelSize.toString()} type='range' min={4} max={100} step={1} />
-        <Input placeHolder="Pixel size" onChange={setFun(setDensity)} value={density.toString()} type='range' min={0} max={1} step={0.05} />
-        <p>current rule:{ruleNumber}</p>
-        <p>cell size:{pixelSize}</p>
-        <p>density:{density}</p>
+        <label>
+          Select rule:{" "}
+          <Input placeHolder="Rule number" onChange={setFun(setRuleNumber)} value={ruleNumber.toString()} />
+        </label>
+
+        <label>
+          Cell size: {pixelSize}{" "}
+          <Input placeHolder="Pixel size" onChange={setFun(setPixelSize)} value={pixelSize.toString()} type='range' min={4} max={100} step={1} />
+        </label>
+
+        <label>
+          Density:{density}{" "}
+          <Input placeHolder="Density" onChange={setFun(setDensity)} value={density.toString()} type='range' min={0} max={1} step={0.05} />
+        </label>
+
+        <label>
+          Try preset:{" "}
+          <Select options={interesting_presets} onSelect={selectPreset} name="presets" />
+        </label>
       </div>
 
       <Fireflies
